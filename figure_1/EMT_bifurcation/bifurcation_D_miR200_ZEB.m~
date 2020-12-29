@@ -1,0 +1,21 @@
+clear all
+[x,v,s,h,f] = miR200ZEB_bifur; 
+a = x(4,:); %bifurcation parameter
+b = x(1,:)./; %x(1) = miR-200, x(2) = mRNA of ZEB, x(3) = ZEB protein
+c = a./1000;
+
+%% Based on eigenvalues to judge stable vs. unstable states
+ind = zeros(1,4);1
+figure1 = figure('Color',[1 1 1],'units','normalized','outerposition',[0 0 1 1]);
+
+plot(c(1:ind(1)),b(1:ind(1)),'b','LineWidth',2);
+hold on
+plot(c(ind(1)+1:ind(2)),b(ind(1)+1:ind(2)),'r--','LineWidth',2);
+plot(c(ind(2)+1:ind(3)),b(ind(2)+1: ind(3)),'b','LineWidth',2);
+plot(c(ind(3)+1:ind(4)),b(ind(3)+1:ind(4)),'r--','LineWidth',2);
+plot(c(ind(4)+1:end),b(ind(4)+1:end),'b','LineWidth',2);
+
+xlim([150 250]);
+xlabel('Protein SNAIL (10^3 molecules)');
+ylabel('Zeb mRNA (molecules)');
+saveas(gcf,"bifurcation_zeb.png")
