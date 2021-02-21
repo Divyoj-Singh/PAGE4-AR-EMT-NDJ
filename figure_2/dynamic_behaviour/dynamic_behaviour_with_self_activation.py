@@ -85,6 +85,7 @@ p['H']=50*gamma_H  # original H=10 because there was no loss due to chemical rea
 
 ## Production rates:
 p['gA'] = 100.0*gamma_H ## 4.62
+print(p['gA'])
 p['gP'] = 50.0*gamma_H ## 2.31
 p['gC']=60*gamma_H ## 2.77
 # in addition: the conversion of HIPK1-P4 to CLK2-P4 originally had a rate ( gH*C*Pm/(Pm + B) in eqs. 7-8 of methods)
@@ -127,8 +128,8 @@ p['lAtoC'] = 0.1 # AR to CLK2
 p['gX'] = 50*gamma_H  #2.31
 p['kX'] = 1*gamma_H #0.04
 p['n'] = 4
-p['lAtoX'] = 0.9  # AR to x
-p['lXtoA'] = 0.9 # x to AR
+p['lAtoX'] = 0.1  # AR to x
+p['lXtoA'] = 0.1 # x to AR
 p['X0'] = 25.
 #### self activation:
 p['nX']=4
@@ -136,7 +137,7 @@ p['lXtoX']=1
 #%% Calling and then plotting dynamics:
 
 ampl=0
-p['lAtoX'] = p['lXtoA'] = 0.1;
+p['lAtoX'] = p['lXtoA'] = 0.9;
 p['lAtoC'] = p['lMtoA'] = 0.1;
 
 PM1,PH1,C1,PU1,A1,X1 = integrate_cons(tm, p, 200, 0)
